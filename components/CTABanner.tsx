@@ -10,24 +10,35 @@ interface CTABannerProps {
 }
 
 export default function CTABanner({
-  headline = "Schedule a Private Showing",
-  description = "Tour our most exclusive residences with a dedicated advisor and tailored market insights.",
-  ctaLabel = "Book a Consultation",
-  ctaHref = "/contact",
-  secondaryCtaLabel = "View Featured Listings",
-  secondaryCtaHref = "/listings",
+  headline = "Ready to schedule your visit?",
+  description = "Book an appointment in minutes or speak with our care team for personalized guidance.",
+  ctaLabel = "Book an appointment",
+  ctaHref = "/appointments",
+  secondaryCtaLabel = "Call our clinic",
+  secondaryCtaHref = "tel:+18005550199",
 }: Partial<CTABannerProps>) {
   return (
     <section className="bg-primary py-16 md:py-20">
       <div className="container mx-auto max-w-4xl px-4 text-center">
-        <h2 className="text-3xl font-bold text-primary-foreground md:text-4xl">{headline}</h2>
-        {description && <p className="mt-4 text-lg text-primary-foreground/80">{description}</p>}
+        <h2 className="text-3xl font-bold text-primary-foreground md:text-4xl">
+          {headline}
+        </h2>
+        {description && (
+          <p className="mt-4 text-lg text-primary-foreground/80">
+            {description}
+          </p>
+        )}
         <div className="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
           <Button size="lg" variant="secondary" className="px-8" asChild>
             <a href={ctaHref}>{ctaLabel}</a>
           </Button>
           {secondaryCtaLabel && secondaryCtaHref && (
-            <Button size="lg" variant="outline" className="border-primary-foreground text-primary-foreground hover:bg-primary-foreground/10 px-8" asChild>
+            <Button
+              size="lg"
+              variant="outline"
+              className="border-primary-foreground text-primary-foreground hover:bg-primary-foreground/10 px-8"
+              asChild
+            >
               <a href={secondaryCtaHref}>{secondaryCtaLabel}</a>
             </Button>
           )}

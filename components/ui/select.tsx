@@ -1,41 +1,24 @@
-"use client";
-
-import React from "react";
-import { ChevronDown } from "lucide-react";
+import * as React from "react";
 import { cn } from "@/lib/utils";
 
-interface SelectOption {
-  label: string;
-  value: string;
-}
+export interface SelectProps extends React.SelectHTMLAttributes<HTMLSelectElement> {}
 
-interface SelectProps {
-  value?: string;
-  options?: SelectOption[];
-  onChange?: (value: string) => void;
-  className?: string;
-}
-
-export function Select({
-  value = "",
-  options = [],
-  onChange = undefined,
-  className = "",
-}: Partial<SelectProps>) {
-  return (
-    <div className={cn("relative", className)}>
+const Select = React.forwardRef<HTMLSelectElement, SelectProps>(
+  ({ className, children, ...props }, ref) => {
+    return (
       <select
-        value={value}
-        onChange={(event) => onChange && onChange(event.target.value)}
-        className="w-full appearance-none rounded-lg border border-border bg-white px-3 py-2 text-sm text-[#1B2838] focus:outline-none"
+        className={cn(
+          "flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50",
+          className
+        )}
+        ref={ref}
+        {...props}
       >
-        {options.map((option) => (
-          <option key={option.value} value={option.value}>
-            {option.label}
-          </option>
-        ))}
+        {children}
       </select>
-      <ChevronDown className="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-[#1B2838]/60" />
-    </div>
-  );
-}
+    );
+  }
+);
+Select.displayName = "Select";
+
+export { Select };

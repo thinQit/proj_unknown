@@ -1,3 +1,43 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+  --font-heading: "Poppins";
+  --font-body: "Nunito";
+  --radius: 0.75rem;
+
+  --background: 0 0% 100%;
+  --foreground: 203 58% 10%;
+
+  --card: 0 0% 100%;
+  --card-foreground: 203 58% 10%;
+
+  --primary: 201 100% 36%;
+  --primary-foreground: 0 0% 100%;
+
+  --secondary: 190 75% 59%;
+  --secondary-foreground: 201 100% 15%;
+
+  --accent: 190 100% 42%;
+  --accent-foreground: 195 100% 12%;
+
+  --muted: 210 27% 96%;
+  --muted-foreground: 203 21% 37%;
+
+  --border: 208 25% 89%;
+  --ring: 190 75% 59%;
+
+  --destructive: 0 64% 55%;
+  --destructive-foreground: 0 0% 100%;
+}
+
+body {
+  @apply bg-background text-foreground font-body;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  @apply font-heading;
+}

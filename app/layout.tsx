@@ -1,88 +1,73 @@
 import "./globals.css";
-import type { Metadata } from "next";
-import { DM_Serif_Display, Nunito } from "next/font/google";
+import { Poppins, Nunito } from "next/font/google";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 
-const dmSerif = DM_Serif_Display({
+const headingFont = Poppins({
   subsets: ["latin"],
   variable: "--font-heading",
-  weight: ["400"],
+  weight: ["400", "500", "600", "700"],
 });
 
-const nunito = Nunito({
+const bodyFont = Nunito({
   subsets: ["latin"],
   variable: "--font-body",
   weight: ["400", "500", "600", "700"],
 });
 
-export const metadata: Metadata = {
-  title: "Luxe Harbor Realty | Luxury Real Estate in Harborview",
-  description:
-    "Browse curated property listings, meet trusted local agents, estimate payments with our mortgage calculator, and read practical buyer/seller guidance on the Luxe Harbor blog.",
-};
-
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${dmSerif.variable} ${nunito.variable}`}>
-      <body className="bg-background text-foreground">
+    <html lang="en" className={`${headingFont.variable} ${bodyFont.variable}`}>
+      <body className="min-h-screen bg-background text-foreground">
         <Navbar
-          logo="Luxe Harbor Realty"
+          logo="CalmWave Yoga & Wellness"
           navItems={[
             { label: "Home", href: "/" },
-            { label: "Listings", href: "/listings" },
-            { label: "Agents", href: "/agents" },
-            { label: "Services", href: "/services" },
-            { label: "Mortgage Calculator", href: "/mortgage-calculator" },
+            { label: "Classes", href: "/classes" },
+            { label: "Schedule", href: "/schedule" },
+            { label: "Instructors", href: "/instructors" },
+            { label: "Pricing", href: "/pricing" },
             { label: "Blog", href: "/blog" },
             { label: "Contact", href: "/contact" },
           ]}
-          ctaLabel="Schedule a Tour"
-          ctaHref="/contact?intent=tour"
+          ctaLabel="Try Intro Week"
+          ctaHref="/pricing"
         />
-        {children}
+        <main>{children}</main>
         <Footer
-          brand="Luxe Harbor Realty"
-          description="Luxury service. Local expertise. Clear guidance."
-          columns={[
-            {
-              title: "Explore",
-              links: [
-                { label: "Listings", href: "/listings" },
-                { label: "Agents", href: "/agents" },
-                { label: "Services", href: "/services" },
-                { label: "Mortgage Calculator", href: "/mortgage-calculator" },
-              ],
-            },
-            {
-              title: "Resources",
-              links: [
-                { label: "Blog", href: "/blog" },
-                { label: "Buyer Guide", href: "/blog/buyer-guide-harborview" },
-                { label: "Seller Checklist", href: "/blog/seller-prep-checklist" },
-              ],
-            },
-            {
-              title: "Contact",
-              links: [
-                { label: "(206) 555-0113", href: "tel:+12065550113" },
-                {
-                  label: "hello@luxeharborrealty.com",
-                  href: "mailto:hello@luxeharborrealty.com",
-                },
-                {
-                  label:
-                    "214 Goldfinch St, Suite 300, Harborview, WA 98109",
-                  href: "/contact",
-                },
-              ],
-            },
-          ]}
-          copyright="© 2026 Luxe Harbor Realty. All rights reserved."
+          headline="Make calm a practice"
+          subheadline="Join us for mindful movement, breath, and recovery—one class at a time."
+          primaryCta={{ label: "Get Started", href: "/pricing" }}
+          secondaryCta={{ label: "Read the Blog", href: "/blog" }}
+          content={{
+            columns: [
+              {
+                title: "Studio",
+                links: [
+                  { label: "Classes", href: "/classes" },
+                  { label: "Schedule", href: "/schedule" },
+                  { label: "Instructors", href: "/instructors" },
+                  { label: "Pricing", href: "/pricing" },
+                ],
+              },
+              {
+                title: "Resources",
+                links: [
+                  { label: "Blog", href: "/blog" },
+                  { label: "FAQ", href: "/#faq" },
+                  { label: "Contact", href: "/contact" },
+                ],
+              },
+              {
+                title: "Legal",
+                links: [
+                  { label: "Privacy Policy", href: "/privacy" },
+                  { label: "Terms", href: "/terms" },
+                ],
+              },
+            ],
+            copyright: "© 2026 CalmWave Yoga & Wellness. All rights reserved.",
+          }}
         />
       </body>
     </html>

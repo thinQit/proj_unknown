@@ -15,33 +15,48 @@ interface TestimonialsAnimatedProps {
   autoplay?: boolean;
 }
 
+const defaultTestimonials: TestimonialItem[] = [
+  {
+    quote:
+      "The care team listened to my concerns and built a plan that actually fit my schedule. I finally feel supported.",
+    name: "Sophia Reynolds",
+    designation: "Primary Care Patient",
+    src: "https://res.cloudinary.com/dwc294mzm/image/upload/c_fill,w_1000,h_750/site-images/corporate/default.jpg",
+  },
+  {
+    quote:
+      "Booking an appointment was effortless, and the telehealth visit was just as thorough as an in-person visit.",
+    name: "Marcus Lee",
+    designation: "Telehealth Member",
+    src: "https://res.cloudinary.com/dwc294mzm/image/upload/c_fill,w_1000,h_750/site-images/corporate/default.jpg",
+  },
+  {
+    quote:
+      "Our pediatrician was incredible with our toddler and explained every step. We feel confident in our care.",
+    name: "Jenna Patel",
+    designation: "Parent & Caregiver",
+    src: "https://res.cloudinary.com/dwc294mzm/image/upload/c_fill,w_1000,h_750/site-images/corporate/default.jpg",
+  },
+];
+
 export default function TestimonialsAnimated({
-  headline = "Member Transformations That Speak",
-  subheadline = "Real stories from athletes who showed up, trained hard, and changed their lives.",
-  testimonials = [],
+  headline = "Patients who feel seen and cared for",
+  subheadline = "Real stories from families who trust Harborview Health.",
+  testimonials = defaultTestimonials,
   autoplay = true,
 }: Partial<TestimonialsAnimatedProps>) {
-  const safeTestimonials =
-    testimonials.length > 0
-      ? testimonials
-      : [
-          {
-            quote:
-              "The coaches pushed me past limits I didn't know existed. Six weeks in and my strength is up, body fat down, and confidence through the roof.",
-            name: "Maya Ortiz",
-            designation: "Unlimited Member",
-            src: "/images/gallery-1.jpg",
-          },
-        ];
-
   return (
-    <section className="py-20 md:py-28" id="testimonials">
+    <section className="py-20 md:py-28">
       <div className="container mx-auto max-w-7xl px-4">
         <div className="mx-auto max-w-2xl text-center mb-8">
-          <h2 className="text-3xl font-bold tracking-tight text-foreground md:text-4xl uppercase">{headline}</h2>
-          {subheadline && <p className="mt-4 text-lg text-muted-foreground">{subheadline}</p>}
+          <h2 className="text-3xl font-bold tracking-tight text-foreground md:text-4xl">
+            {headline}
+          </h2>
+          {subheadline && (
+            <p className="mt-4 text-lg text-muted-foreground">{subheadline}</p>
+          )}
         </div>
-        <AnimatedTestimonials testimonials={safeTestimonials} autoplay={autoplay} />
+        <AnimatedTestimonials testimonials={testimonials} autoplay={autoplay} />
       </div>
     </section>
   );
