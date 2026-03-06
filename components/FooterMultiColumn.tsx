@@ -14,54 +14,45 @@ interface FooterMultiColumnProps {
 }
 
 export default function FooterMultiColumn({
-  brand = "Aurelia Estates",
-  description = "A boutique real-estate advisory specializing in luxury residences, waterfront estates, and investment properties.",
+  brand = "PulseForge Fitness",
+  description = "High-intensity training, expert coaching, and a community built to push you further every session.",
   columns = [
     {
-      title: "Listings",
+      title: "Explore",
       links: [
-        { label: "Featured Properties", href: "/listings" },
-        { label: "New Developments", href: "/developments" },
-        { label: "Luxury Rentals", href: "/rentals" },
-        { label: "Neighborhoods", href: "/neighborhoods" },
+        { label: "Class Schedule", href: "#classes" },
+        { label: "Trainer Team", href: "#trainers" },
+        { label: "Memberships", href: "#pricing" },
+        { label: "Transformations", href: "#transformations" },
       ],
     },
     {
-      title: "Services",
+      title: "Support",
       links: [
-        { label: "Buyer Representation", href: "/services/buy" },
-        { label: "Seller Strategy", href: "/services/sell" },
-        { label: "Relocation", href: "/services/relocation" },
-        { label: "Property Management", href: "/services/management" },
-      ],
-    },
-    {
-      title: "Company",
-      links: [
-        { label: "Our Story", href: "/about" },
-        { label: "Meet the Team", href: "/agents" },
-        { label: "Press & Media", href: "/press" },
+        { label: "Contact Us", href: "#contact" },
+        { label: "FAQ", href: "/faq" },
+        { label: "Policies", href: "/policies" },
         { label: "Careers", href: "/careers" },
       ],
     },
     {
-      title: "Resources",
+      title: "Visit",
       links: [
-        { label: "Market Reports", href: "/insights" },
-        { label: "Mortgage Guide", href: "/resources/mortgage" },
-        { label: "Home Valuation", href: "/valuation" },
-        { label: "Contact", href: "/contact" },
+        { label: "Downtown Studio", href: "/locations/downtown" },
+        { label: "Northside Studio", href: "/locations/northside" },
+        { label: "Parking Info", href: "/parking" },
+        { label: "Hours", href: "/hours" },
       ],
     },
   ],
-  copyright = "",
+  copyright,
 }: Partial<FooterMultiColumnProps>) {
   return (
     <footer className="bg-foreground text-background">
       <div className="container mx-auto max-w-7xl px-4 py-12 md:py-16">
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
           <div className="lg:col-span-1">
-            <h3 className="text-lg font-bold">{brand}</h3>
+            <h3 className="text-lg font-bold uppercase tracking-wider">{brand}</h3>
             <p className="mt-3 text-sm text-background/70">{description}</p>
           </div>
           {columns.map(function (col) {
@@ -72,7 +63,10 @@ export default function FooterMultiColumn({
                   {col.links.map(function (link) {
                     return (
                       <li key={link.href}>
-                        <Link href={link.href} className="text-sm text-background/70 transition-colors hover:text-background">
+                        <Link
+                          href={link.href}
+                          className="text-sm text-background/70 transition-colors hover:text-background"
+                        >
                           {link.label}
                         </Link>
                       </li>
@@ -85,7 +79,8 @@ export default function FooterMultiColumn({
         </div>
         <Separator className="my-8 bg-background/20" />
         <p className="text-center text-sm text-background/50">
-          {copyright || ("© " + new Date().getFullYear() + " " + brand + ". All rights reserved.")}
+          {copyright ||
+            ("\u00a9 " + new Date().getFullYear() + " " + brand + ". All rights reserved.")}
         </p>
       </div>
     </footer>
